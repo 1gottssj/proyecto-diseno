@@ -33,13 +33,36 @@
         }
         
         #filtered-data-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .data-card {
             background-color: #f9f9f9;
-            padding: 20px;
+            padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 4px;
-            white-space: pre-wrap;
-            overflow: auto;
-            max-height: 400px;
+            border-radius: 8px;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .data-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .data-card h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .data-card p {
+            margin: 0.5em 0;
+            font-size: 0.9em;
+            color: #666;
         }
 
         form {
@@ -86,8 +109,8 @@
             <button type="submit">Filtrar</button>
         </form>
 
-        <p id="result-count"></p>
-        <pre id="filtered-data-display"></pre>
+        <p id="result-count">Filtra los datos para ver los resultados.</p>
+        <div id="filtered-data-display"></div>
     </div>
 
     <script>
@@ -101,12 +124,35 @@
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('result-count').innerText = `Total de resultados: ${data.count}`;
-                    document.getElementById('filtered-data-display').innerText = JSON.stringify(data.data, null, 2);
+                    
+                    // Limpiar el contenido anterior
+                    const displayContainer = document.getElementById('filtered-data-display');
+                    displayContainer.innerHTML = '';
+
+                    // Crear tarjetas para cada elemento de datos
+                    data.data.forEach(item => {
+                        const card = document.createElement('div');
+                        card.classList.add('data-card');
+                        
+                        card.innerHTML = `
+                            <h3>${item.name || 'Sin Nombre'}</h3>
+                            <p><strong>Edad:</strong> ${item.age}</p>
+                            <p><strong>Sexo:</strong> ${item.sex}</p>
+                            <p><strong>Discapacidad:</strong> ${item.disability ? 'Sí' : 'No'}</p>
+                            <p><strong>Región:</strong> ${item.region}</p>
+                            <p><strong>País:</strong> ${item.country}</p>
+                            <p><strong>Ingreso:</strong> ${item.income}</p>
+                        `;
+                        displayContainer.appendChild(card);
+                    });
                 })
                 .catch(error => {
                     console.error('Error:', error);
+                    document.getElementById('result-count').innerText = 'Error al obtener los datos.';
+                    document.getElementById('filtered-data-display').innerHTML = '';
                 });
         });
     </script>
 </body>
 </html>
+
