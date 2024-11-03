@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dataDisplay = document.getElementById('data-display');
     const addDataForm = document.getElementById('add-data-form');
-    const filterDataForm = document.getElementById('filter-data-form');
+    const filterButton = document.getElementById('filter-button'); // Nuevo selector para el botón de filtrar
     const languageSelect = document.getElementById('language-select');
 
     // Guardar datos del usuario en localStorage en el registro
@@ -41,12 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 region: 'Region',
                 country: 'Country',
                 income: 'Income',
-                addDataBtn: 'Add Data',
-                filterAny: 'Any',
-                filterAge: 'Age:',
-                filterSex: 'Sex:',
-                filterRegion: 'Region:',
-                filterCountry: 'Country:'
+                addDataBtn: 'Add Data'
             },
             es: {
                 addData: 'Agregar Datos',
@@ -63,17 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 region: 'Región',
                 country: 'País',
                 income: 'Ingresos',
-                addDataBtn: 'Agregar Datos',
-                filterAny: 'Cualquiera',
-                filterAge: 'Edad:',
-                filterSex: 'Sexo:',
-                filterRegion: 'Región:',
-                filterCountry: 'País:'
+                addDataBtn: 'Agregar Datos'
             }
         };
 
         document.querySelector('.add-data h2').textContent = translations[language].addData;
-        document.querySelector('.filter-data h2').textContent = translations[language].filterData;
+        document.querySelector('.filter-data button').textContent = translations[language].filterData;
         document.querySelector('.data-display h2').textContent = translations[language].data;
 
         document.querySelector('label[for="name"]').textContent = translations[language].name + ':';
@@ -88,28 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('label[for="country"]').textContent = translations[language].country + ':';
         document.querySelector('label[for="income"]').textContent = translations[language].income + ':';
         document.querySelector('#add-data-form button').textContent = translations[language].addDataBtn;
-
-        document.querySelector('label[for="filter-age"]').textContent = translations[language].filterAge;
-        document.querySelector('label[for="filter-sex"]').textContent = translations[language].filterSex;
-        document.querySelector('#filter-sex option[value=""]').textContent = translations[language].filterAny;
-        document.querySelector('#filter-sex option[value="Male"]').textContent = translations[language].male;
-        document.querySelector('#filter-sex option[value="Female"]').textContent = translations[language].female;
-        document.querySelector('label[for="filter-region"]').textContent = translations[language].filterRegion;
-        document.querySelector('label[for="filter-country"]').textContent = translations[language].filterCountry;
     }
 
     // Cambiar idioma cuando se selecciona uno diferente en el selector
     if (languageSelect) {
         languageSelect.addEventListener('change', (event) => {
             setLanguage(event.target.value);
-        });
-    }
-
-    // Guardar nombre del usuario en localStorage
-    const nameInput = document.getElementById('name');
-    if (nameInput) {
-        nameInput.addEventListener('input', () => {
-            localStorage.setItem('username', nameInput.value);
         });
     }
 
@@ -160,36 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Manejo del formulario de filtro de datos
-    if (filterDataForm) {
-        filterDataForm.addEventListener('submit', event => {
-            event.preventDefault();
-            const formData = new FormData(filterDataForm);
-            const queryParams = new URLSearchParams();
-            
-            if (formData.get('filter-age')) {
-                queryParams.append('age', formData.get('filter-age'));
-            }
-            if (formData.get('filter-sex')) {
-                queryParams.append('sex', formData.get('filter-sex'));
-            }
-            if (formData.get('filter-region')) {
-                queryParams.append('region', formData.get('filter-region'));
-            }
-            if (formData.get('filter-country')) {
-                queryParams.append('country', formData.get('filter-country'));
-            }
-
-            const url = `/api/data/filter?${queryParams.toString()}`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    localStorage.setItem('filteredData', JSON.stringify(data.data));
-                    localStorage.setItem('filteredCount', data.count);
-                    window.location.href = '/filter_results';
-                })
-                .catch(error => console.error('Error filtering data:', error));
+    // Manejo del botón de filtrado de datos
+    if (filterButton) {
+        filterButton.addEventListener('click', () => {
+            // Redirige a la página de resultados o realiza otra acción al hacer clic en "Filtrar Data"
+            window.location.href = '/filter_results';
         });
     }
 
@@ -206,3 +155,4 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchData('/api/data', (data) => displayData(data, 'data-display'));
     }
 });
+
