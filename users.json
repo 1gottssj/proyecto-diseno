@@ -1,0 +1,16 @@
+[
+    {
+        "username": "magizer",
+        "password": "scrypt:32768:8:1$iSkeSG8h4HyJnvA6$e0d54ff3c356bd5fa9bcbe86c10c1750bb2e3b42c120056b90ab062fd909523e6bc61129d656f46e0d94c03ba0718eb01ab87a0b527a558cde1b1e26ab824087",
+        "email": "blopezpachel@gmail.com",
+        "age": "13",
+        "language": "es"
+    },
+    {
+        "username": "ola",
+        "password": "scrypt:32768:8:1$Pv3wOXh3a0hhNbls$2afd4a34f8769f3f452e3a19b8eb60b15edd33109bed58bf8c5d46f37ab9a25360f1fb047c43841050853dc7150fad3e095973cf44c1ac3e5cb4820f856b6d43",
+        "email": "blopezpachel@gmail.com",
+        "age": "21",
+        "language": "en"
+    }
+]

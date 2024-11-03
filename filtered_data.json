@@ -1,0 +1,15 @@
+{
+    "count": 1,
+    "data": [
+        {
+            "id": "1fbc2c17-14bd-4c24-8a1f-b4075795c336",
+            "name": "Name671",
+            "age": 0,
+            "sex": "Male",
+            "disability": false,
+            "region": "East",
+            "country": "Chile",
+            "income": 60488
+        }
+    ]
+}
