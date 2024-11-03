@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,65 +32,81 @@
             margin-bottom: 10px;
         }
         
-        .result-item {
+        #filtered-data-display {
             background-color: #f9f9f9;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 20px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            white-space: pre-wrap;
+            overflow: auto;
+            max-height: 400px;
         }
-        
-        .result-item h3 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #007BFF; /* Color azul para los títulos */
+
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        
-        .result-item p {
+
+        input, select {
             margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Filtered Results</h1>
+
+        <form id="filter-form">
+            <input type="number" name="age" placeholder="Edad mínima" min="0">
+            <select name="sex">
+                <option value="">Seleccione Sexo</option>
+                <option value="Male">Masculino</option>
+                <option value="Female">Femenino</option>
+            </select>
+            <input type="text" name="region" placeholder="Región">
+            <input type="text" name="country" placeholder="País">
+            <button type="submit">Filtrar</button>
+        </form>
+
         <p id="result-count"></p>
-        <div id="filtered-data-display"></div>
+        <pre id="filtered-data-display"></pre>
     </div>
+
     <script>
-        // Simulando datos filtrados (deberías reemplazar esto con la respuesta real de tu backend)
-        const filteredData = [
-            { nombre: "Juan Pérez", edad: 30, genero: "Masculino" },
-            { nombre: "Ana Gómez", edad: 25, genero: "Femenino" }
-            // Agrega más objetos según sea necesario
-        ];
-        
-        // Función para mostrar los datos filtrados
-        function displayFilteredData(data) {
-            const resultCount = document.getElementById("result-count");
-            const display = document.getElementById("filtered-data-display");
-            
-            // Actualiza el contador de resultados
-            resultCount.innerText = `Total de resultados: ${data.length}`;
-            
-            // Limpia el display anterior
-            display.innerHTML = "";
-            
-            // Agrega cada resultado al display
-            data.forEach(item => {
-                const resultItem = document.createElement("div");
-                resultItem.classList.add("result-item");
-                resultItem.innerHTML = `
-                    <h3>${item.nombre}</h3>
-                    <p>Edad: ${item.edad}</p>
-                    <p>Género: ${item.genero}</p>
-                `;
-                display.appendChild(resultItem);
-            });
-        }
-        
-        // Llama a la función para mostrar los datos filtrados (ejemplo)
-        displayFilteredData(filteredData);
+        document.getElementById('filter-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+
+            const formData = new FormData(this);
+            const params = new URLSearchParams(formData).toString();
+
+            fetch(`/api/data/filter?${params}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result-count').innerText = `Total de resultados: ${data.count}`;
+                    document.getElementById('filtered-data-display').innerText = JSON.stringify(data.data, null, 2);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
     </script>
 </body>
 </html>
