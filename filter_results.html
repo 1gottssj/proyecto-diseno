@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtered Results</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        #result-count {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .result-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .result-item h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #007BFF; /* Color azul para los títulos */
+        }
+        
+        .result-item p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Filtered Results</h1>
+        <p id="result-count"></p>
+        <div id="filtered-data-display"></div>
+    </div>
+    <script>
+        // Simulando datos filtrados (deberías reemplazar esto con la respuesta real de tu backend)
+        const filteredData = [
+            { nombre: "Juan Pérez", edad: 30, genero: "Masculino" },
+            { nombre: "Ana Gómez", edad: 25, genero: "Femenino" }
+            // Agrega más objetos según sea necesario
+        ];
+        
+        // Función para mostrar los datos filtrados
+        function displayFilteredData(data) {
+            const resultCount = document.getElementById("result-count");
+            const display = document.getElementById("filtered-data-display");
+            
+            // Actualiza el contador de resultados
+            resultCount.innerText = `Total de resultados: ${data.length}`;
+            
+            // Limpia el display anterior
+            display.innerHTML = "";
+            
+            // Agrega cada resultado al display
+            data.forEach(item => {
+                const resultItem = document.createElement("div");
+                resultItem.classList.add("result-item");
+                resultItem.innerHTML = `
+                    <h3>${item.nombre}</h3>
+                    <p>Edad: ${item.edad}</p>
+                    <p>Género: ${item.genero}</p>
+                `;
+                display.appendChild(resultItem);
+            });
+        }
+        
+        // Llama a la función para mostrar los datos filtrados (ejemplo)
+        displayFilteredData(filteredData);
+    </script>
+</body>
+</html>
