@@ -2,14 +2,13 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f2f6ff;
-    background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Fondo sutil de patrón */
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-y: auto; /* Permitir scroll en caso de contenido extenso */
     color: #333;
 }
 
@@ -22,7 +21,6 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 20px auto;
 }
 
 /* Efecto de hover */
@@ -36,7 +34,6 @@ h1 {
     font-size: 1.8rem;
     color: #4a4e69;
     margin-bottom: 25px;
-    font-weight: bold;
 }
 
 /* Subtítulo */
@@ -50,7 +47,7 @@ p {
 input[type="text"], 
 input[type="password"],
 input[type="email"],
-input[type="number"], /* Añadido para campos de tipo número */
+input[type="number"],
 select,
 input[type="radio"],
 input[type="checkbox"] {
@@ -59,9 +56,8 @@ input[type="checkbox"] {
     margin: 15px 0;
     border: 1px solid #ddd;
     border-radius: 10px;
-    font-size: 1rem;
     background-color: #f9fafb;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
     box-sizing: border-box;
 }
 
@@ -71,22 +67,15 @@ select {
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
-    cursor: pointer;
 }
 
 input[type="radio"], input[type="checkbox"] {
     width: auto;
-    margin: 0 10px 0 0;
+    margin-right: 10px;
     vertical-align: middle;
 }
 
-input[type="text"]:focus, 
-input[type="password"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus, /* Añadido para mantener estilos al enfocar */
-select:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+input:focus {
     border-color: #4a4e69;
     background-color: #fff;
     outline: none;
@@ -102,7 +91,6 @@ button {
     background-color: #4a4e69;
     color: #fff;
     font-size: 1rem;
-    font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin-top: 20px;
@@ -139,8 +127,69 @@ a:hover {
     h1 {
         font-size: 1.5rem;
     }
-    button {
-        padding: 12px;
-        font-size: 0.9rem;
-    }
 }
+
+/* Estilos de los datos */
+.data-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.data-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px; /* Ajusta según sea necesario */
+    background-color: #f9f9f9;
+}
+
+.data-card h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.data-card p {
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Estilos del carrusel */
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carousel-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.carousel-button:hover {
+    background-color: #45a049;
+}
+
+pre {
+    display: none; /* Esconde inicialmente todos los bloques de datos */
+    background-color: #e7f3fe; /* Fondo azul claro */
+    border: 1px solid #2196F3; /* Borde azul */
+    padding: 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 0; /* Sin margen */
+}
+
+/* Mostrar el bloque de datos */
+pre.show {
+    display: block; /* Solo muestra el bloque actual */
+}
+
