@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dataDisplay = document.getElementById('data-display');
     const addDataForm = document.getElementById('add-data-form');
-    const filterButton = document.getElementById('filter-button'); // Nuevo selector para el botón de filtrar
+    const filterButton = document.getElementById('filter-button'); 
     const languageSelect = document.getElementById('language-select');
 
     // Guardar datos del usuario en localStorage en el registro
     if (window.location.pathname === '/register') {
         document.querySelector('form').addEventListener('submit', event => {
+            // Guardar datos de registro en localStorage
             const username = document.getElementById('username').value;
             const language = document.getElementById('language').value;
             const email = document.getElementById('email').value;
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        // Actualiza los textos según el idioma seleccionado
         document.querySelector('.add-data h2').textContent = translations[language].addData;
         document.querySelector('.filter-data button').textContent = translations[language].filterData;
         document.querySelector('.data-display h2').textContent = translations[language].data;
@@ -90,7 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para realizar fetch y manejar errores
     function fetchData(url, callback) {
         fetch(url)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => callback(data))
             .catch(error => console.error('Error fetching data:', error));
     }
@@ -99,7 +106,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayData(data, elementId) {
         const element = document.getElementById(elementId);
         if (element) {
-            element.textContent = JSON.stringify(data, null, 2);
+            element.innerHTML = ''; // Limpiar contenido previo
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('data-card');
+                
+                card.innerHTML = `
+                    <h2>${item.name}</h2>
+                    <p>Edad: ${item.age}</p>
+                    <p>Sexo: ${item.sex}</p>
+                    <p>Región: ${item.region}</p>
+                    <p>País: ${item.country}</p>
+                    <p>Ingreso: $${item.income}</p>
+                `;
+
+                element.appendChild(card);
+            });
         }
     }
 
@@ -152,7 +175,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch inicial para mostrar todos los datos
     if (dataDisplay) {
-        fetchData('/api/data', (data) => displayData(data, 'data-display'));
+        fetchData('/api/data', (data) => {
+            console.log('Datos obtenidos:', data); // Verificar que los datos se obtienen correctamente
+            displayData(data, 'data-display');
+        });
     }
+
+    function displayData(data, elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.innerHTML = ''; // Limpiar contenido previo
+    
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('data-card');
+    
+                card.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p>Edad: ${item.age}</p>
+                    <p>Sexo: ${item.sex}</p>
+                    <p>Región: ${item.region}</p>
+                    <p>País: ${item.country}</p>
+                    <p>Ingreso: $${item.income}</p>
+                `;
+    
+                element.appendChild(card);
+            });
+        }
+    }
+    
 });
 
