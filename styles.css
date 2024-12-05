@@ -1,195 +1,255 @@
 /* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f2f6ff;
-    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    background: linear-gradient(135deg, #eef2f3, #8e9eab);
     margin: 0;
     padding: 0;
+    color: #333;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #333;
+    align-items: flex-start;
 }
 
+/* Contenedor principal */
 .container {
-    width: 90%;
-    max-width: 400px;
-    background-color: #ffffff;
-    padding: 50px 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efecto de hover */
-.container:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Encabezado */
-h1 {
-    font-size: 1.8rem;
-    color: #4a4e69;
-    margin-bottom: 25px;
-}
-
-/* Subtítulo */
-p {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 30px;
-}
-
-/* Campos del formulario */
-input[type="text"], 
-input[type="password"],
-input[type="email"],
-input[type="number"],
-select,
-input[type="radio"],
-input[type="checkbox"] {
-    width: 100%;
-    padding: 15px;
-    margin: 15px 0;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f9fafb;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    box-sizing: border-box;
-}
-
-select {
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%234a4e69" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 12px;
-}
-
-input[type="radio"], input[type="checkbox"] {
-    width: auto;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
-input:focus {
-    border-color: #4a4e69;
-    background-color: #fff;
-    outline: none;
-    box-shadow: 0 0 8px rgba(74, 78, 105, 0.2);
-}
-
-/* Botón de submit */
-button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    background-color: #4a4e69;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #3c3f5a;
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: translateY(1px);
-}
-
-/* Links de ayuda */
-a {
-    display: block;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #4a4e69;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #3c3f5a;
-}
-
-/* Diseño responsive */
-@media (max-width: 600px) {
-    .container {
-        padding: 30px 20px;
-    }
-    h1 {
-        font-size: 1.5rem;
-    }
-}
-
-/* Estilos de los datos */
-.data-container {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-top: 40px;
+}
+
+/* Columna izquierda: Formulario */
+.left-column {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 2px solid #f0f0f0;
+}
+
+.left-column h1 {
+    font-size: 2.2rem;
+    color: #4a4e69;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    padding: 20px;
 }
 
-.data-card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px; /* Ajusta según sea necesario */
-    background-color: #f9f9f9;
-}
-
-.data-card h2 {
-    font-size: 1.2em;
-    margin: 0;
-}
-
-.data-card p {
-    margin: 5px 0;
+.form-group label {
+    font-weight: bold;
     color: #555;
 }
 
-/* Estilos del carrusel */
-.carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+/* Estilo para el botón de logout */
+.logout-btn {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 15px; /* Espacio desde la parte superior */
+    right: 15px; /* Espacio desde el lado derecho */
+    background-color: transparent;  /* Fondo transparente */
+    border: 1px solid #ddd;  /* Borde sutil */
+    color: #333;  /* Color del texto */
+    font-size: 0.8rem;  /* Tamaño de fuente más pequeño */
+    padding: 6px 12px;  /* Padding pequeño */
+    border-radius: 5px;  /* Bordes redondeados */
+    cursor: pointer;  /* Aparece como botón clickeable */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    z-index: 999;  /* Asegura que el botón esté por encima de otros elementos */
+    text-decoration: none;  /* Asegura que no haya subrayado si es un enlace */
 }
 
-.carousel-button {
-    background-color: #4CAF50;
+/* Estilo de hover y foco para el botón */
+.logout-btn:hover {
+    background-color: #f5f5f5;  /* Fondo sutil al pasar el ratón */
+    border-color: #aaa;  /* Borde más oscuro */
+}
+
+.logout-btn:focus {
+    outline: none;  /* Eliminar borde de enfoque por defecto */
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);  /* Sombra de enfoque sutil */
+}
+
+/* Campos del formulario */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
+    width: 100%; /* Asegura que todos los campos ocupen el 100% del ancho disponible */
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9fafb;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total del campo */
+}
+
+/* Alineación y enfoque en campos */
+input:focus, select:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.4);
+    outline: none;
+}
+
+/* Botones */
+button {
+    width: 100%; /* El botón ocupará todo el ancho disponible */
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
     color: white;
+    background: linear-gradient(135deg, #6c63ff, #3f3d56);
     border: none;
-    padding: 10px 15px;
+    border-radius: 10px;
     cursor: pointer;
-    border-radius: 5px;
-    margin: 0 10px;
-    font-size: 18px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
-.carousel-button:hover {
-    background-color: #45a049;
+button:hover {
+    background: linear-gradient(135deg, #3f3d56, #6c63ff);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-pre {
-    display: none; /* Esconde inicialmente todos los bloques de datos */
-    background-color: #e7f3fe; /* Fondo azul claro */
-    border: 1px solid #2196F3; /* Borde azul */
-    padding: 15px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
-    margin: 0; /* Sin margen */
+/* Columna derecha: Botones y datos */
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-/* Mostrar el bloque de datos */
-pre.show {
-    display: block; /* Solo muestra el bloque actual */
+.filter-data {
+    text-align: center;
 }
 
+#filter-button {
+    width: 70%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #f53803, #f5d020);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#filter-button:hover {
+    background: linear-gradient(135deg, #f5d020, #f53803);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Datos */
+.data-display {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.data-display h2 {
+    font-size: 1.8rem;
+    color: #4a4e69;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de los datos */
+.data-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Mayor separación entre las tarjetas */
+    justify-content: center; /* Centrar las tarjetas */
+    padding: 20px;
+}
+
+/* Estilos de las tarjetas */
+.data-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Centrado del texto dentro de la tarjeta */
+}
+
+/* Efecto hover para las tarjetas */
+.data-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Título de las tarjetas */
+.data-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Texto dentro de las tarjetas */
+.data-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Apilar las columnas para dispositivos pequeños */
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .left-column {
+        border-right: none; /* Quitar el borde derecho en dispositivos pequeños */
+    }
+
+    .right-column {
+        gap: 20px;
+    }
+
+    /* Ajustar las tarjetas */
+    .data-card {
+        width: 100%; /* Las tarjetas ocupan todo el ancho en pantallas pequeñas */
+    }
+
+    /* Hacer el texto y botones más pequeños */
+    button, #filter-button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para móviles pequeños */
+    .logout-btn {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+
+    .data-card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* Hacer el botón de logout más pequeño */
+    #logout-button {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+    }
+}

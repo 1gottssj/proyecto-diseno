@@ -14,6 +14,7 @@ def load_data():
             return json.load(f)
     return []
 
+
 # Función para guardar datos en un archivo JSON
 def save_data(data):
     with open('data.json', 'w') as f:
@@ -39,17 +40,21 @@ def index():
     return render_template('login.html')
 
 # Ruta para autenticación de usuario
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    users = load_users()
-    username = request.form['username']
-    password = request.form['password']
+    if request.method == 'POST':
+        users = load_users()
+        username = request.form['username']
+        password = request.form['password']
 
-    user = next((u for u in users if u["username"] == username), None)
-    if user and check_password_hash(user["password"], password):
-        session['username'] = username
-        return redirect(url_for('data_monitoring'))
-    return 'Login failed. Please check your username and password.'
+        user = next((u for u in users if u["username"] == username), None)
+        if user and check_password_hash(user["password"], password):
+            session['username'] = username
+            return redirect(url_for('data_monitoring'))
+        return 'Login failed. Please check your username and password.'
+    
+    # Si el método es GET, renderiza la página de inicio de sesión
+    return render_template('login.html')
 
 # Ruta para registro de usuario
 @app.route('/register', methods=['GET', 'POST'])
@@ -77,11 +82,11 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html')
 
-# Ruta para cerrar sesión
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 def logout():
-    session.pop('username', None)
-    return redirect(url_for('index'))
+    session.pop('username', None)  # Eliminar la sesión
+    return redirect(url_for('index'))  # Redirigir a la página de inicio
+
 
 # Ruta para la página de monitoreo de datos (requiere autenticación)
 @app.route('/data_monitoring')
@@ -122,6 +127,9 @@ def filter_data():
     region = request.args.get('region')
     country = request.args.get('country')
     
+    print("Datos originales:", data)  # Imprime todos los datos
+    print(f"Filtros aplicados - Edad: {age}, Sexo: {sex}, Región: {region}, País: {country}")
+    
     if age is not None:
         data = [d for d in data if d['age'] >= age]
     if sex:
@@ -131,12 +139,13 @@ def filter_data():
     if country:
         data = [d for d in data if d['country'] == country]
     
+    print("Datos filtrados:", data)  # Imprime los datos después de filtrar
+    
     filtered_data = {
         'count': len(data),
         'data': data
     }
     
-    # Guardar los datos filtrados para visualización
     with open('filtered_data.json', 'w') as f:
         json.dump(filtered_data, f, indent=4)
     

@@ -42,7 +42,8 @@
 
         input[type="text"],
         input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -80,10 +81,72 @@
             text-decoration: underline;
         }
     </style>
+
+    <script>
+        // Función para cambiar el idioma de la página en tiempo real
+        function changeLanguage() {
+            const languageSelect = document.getElementById("page-language");
+            const selectedLanguage = languageSelect.value;
+            
+            // Textos en español e inglés
+            const texts = {
+                es: {
+                    title: "Registro",
+                    username: "Usuario",
+                    email: "Correo Electrónico",
+                    password: "Contraseña",
+                    confirm_password: "Confirmar Contraseña",
+                    age: "Edad",
+                    profile_language: "Idioma del Perfil",
+                    register: "Registrar",
+                    already_have_account: "¿Ya tienes cuenta?",
+                    login: "Inicia sesión aquí"
+                },
+                en: {
+                    title: "Register",
+                    username: "Username",
+                    email: "Email",
+                    password: "Password",
+                    confirm_password: "Confirm Password",
+                    age: "Age",
+                    profile_language: "Profile Language",
+                    register: "Register",
+                    already_have_account: "Already have an account?",
+                    login: "Login here"
+                }
+            };
+
+            // Cambia el texto de cada elemento según el idioma seleccionado
+            document.querySelector("h1").textContent = texts[selectedLanguage].title;
+            document.querySelector("label[for='username']").textContent = texts[selectedLanguage].username;
+            document.querySelector("label[for='email']").textContent = texts[selectedLanguage].email;
+            document.querySelector("label[for='password']").textContent = texts[selectedLanguage].password;
+            document.querySelector("label[for='confirm-password']").textContent = texts[selectedLanguage].confirm_password;
+            document.querySelector("label[for='age']").textContent = texts[selectedLanguage].age;
+            document.querySelector("label[for='profile-language']").textContent = texts[selectedLanguage].profile_language;
+            document.querySelector("button").textContent = texts[selectedLanguage].register;
+
+            // Actualiza el enlace para iniciar sesión
+            document.querySelector(".link").innerHTML = 
+                `${texts[selectedLanguage].already_have_account} <a href="/login">${texts[selectedLanguage].login}</a>`;
+        }
+    </script>
 </head>
-<body>
+
+<body onload="changeLanguage()">
     <div class="form-container">
         <h1>Registro</h1>
+        
+        <!-- Selector de idioma para la página -->
+        <div class="form-group">
+            <label for="page-language">Idioma de la Página</label>
+            <select id="page-language" onchange="changeLanguage()">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        
+        <!-- Formulario de registro -->
         <form action="/register" method="POST">
             <div class="form-group">
                 <label for="username">Usuario</label>
@@ -101,8 +164,21 @@
                 <label for="confirm-password">Confirmar Contraseña</label>
                 <input type="password" id="confirm-password" name="confirm_password" required>
             </div>
+            <div class="form-group">
+                <label for="age">Edad</label>
+                <input type="text" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="profile-language">Idioma del Perfil</label>
+                <select id="profile-language" name="language" required>
+                    <option value="es">Español</option>
+                    <option value="en">Inglés</option>
+                </select>
+            </div>
             <button type="submit">Registrar</button>
         </form>
+
+        <!-- Enlace para iniciar sesión -->
         <div class="link">
             ¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a>
         </div>

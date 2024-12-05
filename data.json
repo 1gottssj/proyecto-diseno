@@ -1,102 +1,32 @@
 [
     {
-        "id": "43e55c66-cd32-4452-9135-ad888b4d23ac",
-        "name": "Name998",
-        "age": 47,
-        "sex": "Female",
-        "disability": true,
-        "region": "West",
-        "country": "USA",
-        "income": 27268
-    },
-    {
-        "id": "607c5767-cc9c-46e5-8a32-9eed07dd9929",
-        "name": "Name370",
-        "age": 62,
+        "name": "Ignacio Soto",
+        "age": 20,
         "sex": "Male",
         "disability": false,
-        "region": "West",
+        "region": "Valparaiso",
         "country": "Chile",
-        "income": 84506
+        "income": 1000,
+        "id": "9d437162-9027-4350-a1f9-a88e77b7d101"
     },
     {
-        "id": "e9d8fcfa-15ba-4721-9243-caec3903e6b7",
-        "name": "Name800",
-        "age": 78,
-        "sex": "Female",
-        "disability": true,
-        "region": "South",
-        "country": "USA",
-        "income": 81904
-    },
-    {
-        "id": "29c084b9-e8eb-406b-a6bd-96d7fe823d55",
-        "name": "Name879",
-        "age": 1,
-        "sex": "Female",
-        "disability": true,
-        "region": "South",
-        "country": "USA",
-        "income": 88719
-    },
-    {
-        "id": "f14b2fef-3cb1-4324-ac4a-8d0b9bf52182",
-        "name": "Name874",
-        "age": 21,
-        "sex": "Female",
-        "disability": true,
-        "region": "South",
-        "country": "Chile",
-        "income": 99585
-    },
-    {
-        "id": "f2926dd3-ec6d-45f6-8338-2f9d532d5cf7",
-        "name": "Name387",
-        "age": 34,
-        "sex": "Female",
-        "disability": true,
-        "region": "South",
-        "country": "USA",
-        "income": 79489
-    },
-    {
-        "id": "fde1bb55-8c9d-4975-a19c-22bcde427700",
-        "name": "Name21",
-        "age": 58,
-        "sex": "Female",
-        "disability": false,
-        "region": "North",
-        "country": "Chile",
-        "income": 22040
-    },
-    {
-        "id": "f8543cfb-42de-45b7-b0fd-64f8b8463693",
-        "name": "Name310",
-        "age": 100,
-        "sex": "Female",
-        "disability": true,
-        "region": "West",
-        "country": "USA",
-        "income": 59952
-    },
-    {
-        "id": "546bed80-66a5-4195-bbe3-edc28fa82edc",
-        "name": "Name765",
-        "age": 90,
-        "sex": "Female",
-        "disability": true,
-        "region": "West",
-        "country": "Chile",
-        "income": 99652
-    },
-    {
-        "id": "cb032c3d-1877-4e7f-812b-f76c6d65f0b8",
-        "name": "Name907",
-        "age": 0,
+        "name": "Ignacio Soto",
+        "age": 20,
         "sex": "Male",
         "disability": false,
-        "region": "South",
-        "country": "Chile",
-        "income": 26138
+        "region": "valparaiso",
+        "country": "chile",
+        "income": 1000,
+        "id": "8154fe8f-63c1-4db1-9786-c1ef41196548"
+    },
+    {
+        "name": "Santino",
+        "age": 4,
+        "sex": "Male",
+        "disability": false,
+        "region": "valparaiso",
+        "country": "chile",
+        "income": 18,
+        "id": "e3060866-0449-46c2-bb26-b63bdbfe6f77"
     }
 ]

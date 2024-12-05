@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('age', age);
         });
     }
-
     // Obtener idioma preferido del usuario o 'en' como valor predeterminado
     const userLang = localStorage.getItem('language') || 'en';
     setLanguage(userLang);
@@ -203,6 +202,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-    
 });
-
