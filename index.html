@@ -59,7 +59,7 @@
                         <label for="income">Ingreso:</label>
                         <input type="number" id="income" name="income" required>
                     </div>
-                    <button type="submit">Añadir Dato</button>
+                    <button type="submit" id="button">Añadir Dato</button>
                 </form>
             </section>
         </div>
@@ -81,11 +81,10 @@
         </div>
         
     </div>
-    <div class="data-card logout-card">
-        <h3>Cerrar sesión</h3>
+    <div class="logout">
         <!-- Formulario que envía la solicitud POST a la ruta de logout -->
         <form action="{{ url_for('logout') }}" method="POST">
-            <button type="submit" id="logout-button">Cerrar sesión</button>
+            <button type="submit" id="button">Cerrar sesión</button>
         </form>
     </div>
     

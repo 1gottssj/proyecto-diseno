@@ -6,27 +6,7 @@
         "disability": false,
         "region": "Valparaiso",
         "country": "Chile",
-        "income": 1000,
-        "id": "9d437162-9027-4350-a1f9-a88e77b7d101"
-    },
-    {
-        "name": "Ignacio Soto",
-        "age": 20,
-        "sex": "Male",
-        "disability": false,
-        "region": "valparaiso",
-        "country": "chile",
-        "income": 1000,
-        "id": "8154fe8f-63c1-4db1-9786-c1ef41196548"
-    },
-    {
-        "name": "Santino",
-        "age": 4,
-        "sex": "Male",
-        "disability": false,
-        "region": "valparaiso",
-        "country": "chile",
-        "income": 18,
-        "id": "e3060866-0449-46c2-bb26-b63bdbfe6f77"
+        "income": 100000,
+        "id": "627ea5c6-d7b5-45ff-b81d-176dcc70b528"
     }
 ]

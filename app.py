@@ -14,7 +14,6 @@ def load_data():
             return json.load(f)
     return []
 
-
 # Función para guardar datos en un archivo JSON
 def save_data(data):
     with open('data.json', 'w') as f:
@@ -82,11 +81,11 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html')
 
+# Ruta para el logout de usuario
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('username', None)  # Eliminar la sesión
     return redirect(url_for('index'))  # Redirigir a la página de inicio
-
 
 # Ruta para la página de monitoreo de datos (requiere autenticación)
 @app.route('/data_monitoring')

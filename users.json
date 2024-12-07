@@ -1,15 +1,8 @@
 [
     {
-        "username": "ignaciooo",
-        "password": "scrypt:32768:8:1$xx984du59HjxIQOP$37e1b77c4e5bcb3448e91cd039e069b4a94853f6a50d9ccda68c86c426aa4190a7831fec2e8a5f6b04508e24fcb663528153b3bfd7f180980103650262130ee1",
+        "username": "ignaciosoto",
+        "password": "scrypt:32768:8:1$47VXLE2LWuwwAyE7$d389119e58d7b6869f4cbb36ca13aa3374f79a8b9680325db63b07232cefb8e42af2b3a5fe4c48b41577d5642f75a716bd7a584a19ec625acb66f5fec028ee56",
         "email": "ignaciosoto292@gmail.com",
-        "age": "20",
-        "language": "es"
-    },
-    {
-        "username": "caamibastidas",
-        "password": "scrypt:32768:8:1$MIaEY0J0snmh7O2Z$d3473995899545413dd8e14ee1b636a64233caf37c28c982cfa2cbcc0c142363a42801fdbf7d68f2b1636063d561cde17caf8d0fb705d589732e06ca35ea7cd6",
-        "email": "estefaniacamila1712@gmail.com",
         "age": "20",
         "language": "es"
     }
