@@ -3,6 +3,7 @@ import json
 import uuid
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
+import re
 
 app = Flask(__name__)
 app.secret_key = 'clave_secreta_para_sesion'
@@ -80,6 +81,12 @@ def register():
         save_users(users)
         return redirect(url_for('index'))
     return render_template('register.html')
+
+# Función para validar el formato del correo electrónico
+def es_correo_valido(correo):
+    regex = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
+    return re.match(regex, correo)
+
 
 # Ruta para el logout de usuario
 @app.route('/logout', methods=['POST'])
