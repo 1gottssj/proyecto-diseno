@@ -15,9 +15,9 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    gap: 10px;
     width: 90%;
-    max-width: 1200px;
+    max-width: 1800px;
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -174,11 +174,38 @@ input:focus, select:focus {
     line-height: 1.6;
 }
 
+/* Estilo para las tarjetas donde van los gráficos */
+.chart-card {
+    background-color: #fff; /* Fondo blanco para la tarjeta */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px; /* Espaciado entre tarjetas */
+    width: 100%; /* Ocupa todo el ancho */
+    max-width: 600px; /* Máximo tamaño de la tarjeta */
+    margin: 20px auto; /* Centrado automático */
+}
+
+/* Estilo para el título de cada gráfico */
+.chart-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333; /* Color de texto oscuro */
+}
+
+/* Asegurarnos de que el canvas ocupa todo el ancho y una altura específica */
+canvas {
+    width: 100% !important; /* Ocupa todo el ancho disponible */
+    height: 400px; /* Ajusta la altura del gráfico */
+    border-radius: 8px; /* Bordes redondeados para el canvas */
+}
+
 /* Responsive: Estilos para pantallas más pequeñas */
 @media (max-width: 768px) {
     .container {
         flex-direction: column; /* Cambiar a columna en lugar de filas */
-        padding: 20px;
+        padding: 60px;
     }
 
     .left-column {

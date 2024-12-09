@@ -6,6 +6,7 @@
     <title>Sistema de Monitoreo de Datos</title>
     <link rel="stylesheet" href="/static/styles.css">
     <script defer src="/static/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
@@ -79,14 +80,24 @@
                 </div>
             </section>
         </div>
-        
+                <!-- Sección de gráficos al final -->
+        <div id="charts" class="charts-section">
+            <div class="chart-card">
+                <canvas id="incomeChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <canvas id="ageChart"></canvas>
+            </div>
+        </div>  
     </div>
+
+    <!-- Cierre de sesión -->
     <div class="logout">
         <!-- Formulario que envía la solicitud POST a la ruta de logout -->
         <form action="{{ url_for('logout') }}" method="POST">
             <button type="submit" id="button">Cerrar sesión</button>
         </form>
     </div>
-    
+
 </body>
 </html>
