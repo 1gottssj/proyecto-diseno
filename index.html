@@ -80,7 +80,8 @@
                 </div>
             </section>
         </div>
-                <!-- Sección de gráficos al final -->
+        
+        <!-- Sección de gráficos al final -->
         <div id="charts" class="charts-section">
             <div class="chart-card">
                 <canvas id="incomeChart"></canvas>
@@ -88,12 +89,11 @@
             <div class="chart-card">
                 <canvas id="ageChart"></canvas>
             </div>
-        </div>  
+        </div>
     </div>
 
     <!-- Cierre de sesión -->
     <div class="logout">
-        <!-- Formulario que envía la solicitud POST a la ruta de logout -->
         <form action="{{ url_for('logout') }}" method="POST">
             <button type="submit" id="button">Cerrar sesión</button>
         </form>
